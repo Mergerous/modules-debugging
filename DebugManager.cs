@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -7,12 +8,12 @@ namespace Modules.Debugging
     [UsedImplicitly]
     public sealed class DebugManager
     {
-        private readonly IDebuggable[] debuggables;
+        private readonly IEnumerable<IDebuggable> debuggables;
         private readonly DebugContainer debugContainer;
         private VisualElement root;
         private bool isEnabled;
         
-        public DebugManager(DebugContainer debugContainer, params IDebuggable[] debuggables)
+        public DebugManager(DebugContainer debugContainer, IEnumerable<IDebuggable> debuggables)
         {
             this.debugContainer = debugContainer;
             this.debuggables = debuggables;
